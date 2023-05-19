@@ -20,18 +20,21 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var product in Model)
+            @if(Model != null)
             {
-                <tr>
-                    <th>@Html.DisplayFor(model => product.Name)</th>
-                    <th>@Html.DisplayFor(model => product.Price)</th>
-                    <th class="w-50">@Html.DisplayFor(model => product.Description)</th>
-                    <th>
-                        <a asp-controller="Product" asp-action="View" asp-route-productId="@product.Id" class="btn btn-primary">View</a>
-                        <a asp-controller="Product" asp-action="Edit" asp-route-productId="@product.Id" class="btn btn-primary">Edit</a>
-                        <a asp-controller="Product" asp-action="Delete" asp-route-productId="@product.Id" class="btn btn-danger">Delete</a>
-                    </th>
-                </tr>
+                @foreach (var product in Model)
+                {
+                        <tr>
+                            <th>@Html.DisplayFor(model => product.Name)</th>
+                                <th>@Html.DisplayFor(model => product.Price)</th>
+                            <th class="w-50">@Html.DisplayFor(model => product.Description)</th>
+                            <th>
+                                <a asp-controller="Product" asp-action="View" asp-route-productId="@product.Id" class="btn btn-primary">View</a>
+                                <a asp-controller="Product" asp-action="Edit" asp-route-productId="@product.Id" class="btn btn-primary">Edit</a>
+                                <a asp-controller="Product" asp-action="Delete" asp-route-productId="@product.Id" class="btn btn-danger">Delete</a>
+                            </th>
+                        </tr>
+                }
             }
         </tbody>
     </table>
