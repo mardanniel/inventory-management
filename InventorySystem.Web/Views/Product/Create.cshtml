@@ -1,0 +1,21 @@
+@model CreateProductViewModel
+
+<section class="form-section">
+    <form asp-controller="Product" asp-action="Create">
+        <h1 class="h3 mb-3 fw-normal">Create Product</h1>
+        <div asp-validation-summary="ModelOnly" class="text-danger alert alert-danger"></div>
+        <div class="form-floating">
+            <input type="text" class="form-control" asp-for="Name">
+            <label asp-for="Name" class="form-label">Name</label>
+        </div>
+        <div class="form-floating">
+            <input type="number" class="form-control" step="any" asp-for="Price">
+            <label asp-for="Price" class="form-label">Price</label>
+        </div>
+        <div class="form-floating">
+            <input class="form-control" asp-for="Description">
+            <label asp-for="Description" class="form-label">Description</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Create</button>
+    </form>
+</section>

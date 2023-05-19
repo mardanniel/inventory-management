@@ -13,11 +13,8 @@ builder.Services.AddControllers()
 
 builder.Services.AddDbContext<InventoryDbContext>();
 
-// DbContext repository
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-
-// Stored Procedure repository
-// builder.Services.AddScoped<IProductRepository, ProductSPRepository>();
+// builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductRepository, ProductSPRepository>();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<InventoryDbContext>()

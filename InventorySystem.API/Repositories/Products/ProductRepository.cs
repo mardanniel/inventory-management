@@ -5,8 +5,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InventorySystem.API.Repositories.Products
 {
-    // Simple Product CRUD using DbContext
-
     public class ProductRepository : IProductRepository
     {
         private readonly InventoryDbContext _inventoryDbContext;

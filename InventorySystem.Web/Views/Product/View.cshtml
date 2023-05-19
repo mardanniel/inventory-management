@@ -1,0 +1,28 @@
+@model Product
+
+<a asp-controller="Product" asp-action="Index" class="btn btn-primary">Go Back to List</a>
+<section class="container d-flex justify-content-center">
+
+    <div class="card" style="width: 24rem;">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <i class="fa-regular fa-building"></i>
+                @Html.DisplayFor(model => model.Name)
+            </li>
+            <li class="list-group-item">
+                <i class="fa-solid fa-location-dot"></i>
+                @Html.DisplayFor(model => model.Price)
+            </li>
+            <li class="list-group-item">
+                <i class="fa-solid fa-calendar-days"></i>
+                @Html.DisplayFor(model => model.Description)
+            </li>
+            <li class="list-group-item">
+                <i class="fas fa-user-cog"></i>
+                <a asp-controller="Product" asp-action="Edit" asp-route-companyId="@Model.Id" class="btn btn-primary">Edit</a>
+                <a asp-controller="Product" asp-action="Delete" asp-route-companyId="@Model.Id"
+                    class="btn btn-primary">Delete</a>
+            </li>
+        </ul>
+    </div>
+</section>
