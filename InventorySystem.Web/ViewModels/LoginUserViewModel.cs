@@ -13,6 +13,7 @@ namespace InventorySystem.Web.ViewModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        [DisplayName("Remember Me")]
         public bool RememberMe { get; set; }
     }
 }

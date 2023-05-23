@@ -1,7 +1,12 @@
 @model CreateProductViewModel
 
+@{
+    ViewData["Title"] = $"Create Product";
+}
+
 <section class="form-section">
-    <form asp-controller="Product" asp-action="Create">
+    <a asp-controller="Product" asp-action="Index" class="btn btn-primary">Go Back to Products</a>
+    <form class="mt-3" asp-controller="Product" asp-action="Create">
         <h1 class="h3 mb-3 fw-normal">Create Product</h1>
         <div asp-validation-summary="ModelOnly" class="text-danger alert alert-danger"></div>
         <div class="form-floating">

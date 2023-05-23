@@ -1,28 +1,35 @@
 @model Product
 
-<a asp-controller="Product" asp-action="Index" class="btn btn-primary">Go Back to List</a>
-<section class="container d-flex justify-content-center">
+@* @{
+    ViewData["Title"] = $"View {Model.Name}";
+} *@
 
-    <div class="card" style="width: 24rem;">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-                <i class="fa-regular fa-building"></i>
-                @Html.DisplayFor(model => model.Name)
-            </li>
-            <li class="list-group-item">
-                <i class="fa-solid fa-location-dot"></i>
-                @Html.DisplayFor(model => model.Price)
-            </li>
-            <li class="list-group-item">
-                <i class="fa-solid fa-calendar-days"></i>
-                @Html.DisplayFor(model => model.Description)
-            </li>
-            <li class="list-group-item">
-                <i class="fas fa-user-cog"></i>
-                <a asp-controller="Product" asp-action="Edit" asp-route-companyId="@Model.Id" class="btn btn-primary">Edit</a>
-                <a asp-controller="Product" asp-action="Delete" asp-route-companyId="@Model.Id"
+<a asp-controller="Product" asp-action="Index" class="btn btn-primary">Go Back to Products</a>
+<h3 class="my-5">Product Detail</h3>
+<table class="table rounded-3 table-success table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.DisplayFor(model => model.Name)</td>
+            <td>@Html.DisplayFor(model => model.Price)</td>
+            <td>@Html.DisplayFor(model => model.Description)</td>
+            <th>@Html.DisplayFor(model => model.CreatedAt)</th>
+            <th>@Html.DisplayFor(model => model.UpdatedAt)</th>
+            <td>
+                <a asp-controller="Product" asp-action="Edit" asp-route-productId="@Model.Id"
+                    class="btn btn-primary">Edit</a>
+                <a asp-controller="Product" asp-action="Delete" asp-route-productId="@Model.Id"
                     class="btn btn-primary">Delete</a>
-            </li>
-        </ul>
-    </div>
-</section>
+            </td>
+        </tr>
+    </tbody>
+</table>

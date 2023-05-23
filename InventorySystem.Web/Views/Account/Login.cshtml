@@ -5,7 +5,7 @@
 }
 
 <section class="form-section">
-    <form asp-action="Login">
+    <form asp-controller="Account" asp-action="Login">
         <h1 class="h3 mb-3 fw-normal">Login</h1>
 
         <div asp-validation-summary="ModelOnly" class="text-danger alert alert-danger"></div>
@@ -20,7 +20,6 @@
             <label asp-for="Password" class="form-label">Password</label>
             <span asp-validation-for="Password" class="text-danger"></span>
         </div>
-
         <div class="checkbox mb-3">
             <label asp-for="RememberMe">
                 <input type="checkbox" asp-for="RememberMe"> Remember me

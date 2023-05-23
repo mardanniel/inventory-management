@@ -30,11 +30,5 @@ namespace InventorySystem.Web.ViewModels
 
         [Required]
         public char Gender { get; set; }
-
-        [Required]
-        public string Role { get; set; }
-
-        [Required]
-        public Guid Company { get; set; }
     }
 }

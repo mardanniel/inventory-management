@@ -2,17 +2,21 @@ using System.Text;
 using InventorySystem.Web.Models;
 using InventorySystem.Web.ViewModels;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
 
 namespace InventorySystem.Web.Repositories.Products
 {
     public class ProductApiRepository : IProductRepository
     {
         private readonly HttpClient _httpClient;
+        private readonly IConfiguration _appConfig;
 
-        public ProductApiRepository(HttpClient httpClient)
+        public ProductApiRepository(HttpClient httpClient, IConfiguration appConfig)
         {
+            this._appConfig = appConfig;
             this._httpClient = httpClient;
             this._httpClient.BaseAddress = new Uri("http://localhost:5257");
+            this._httpClient.DefaultRequestHeaders.Add("ApiKey", this._appConfig.GetValue<string>("ApiKey"));
         }
 
         public async Task<bool> AddProduct(Product newProduct)

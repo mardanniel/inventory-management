@@ -1,40 +1,51 @@
 @model List<Product>
 
-<section class="d-flex flex-column align-items-center">
+@{
+    ViewData["Title"] = "List of Products";
+}
+
+<section class="mh-100 d-flex flex-column align-items-center">
     <div class="align-self-start d-flex">
         <h3 class="fw-bolder">Products</h3>
     </div>
-    <hr class="flex-grow-1 mx-4 w-100">
     <div class="d-flex flex-column justify-content-center align-items-center mt-4">
         <a asp-controller="Product" asp-action="Create" class="mb-4 custom-button-link p-2 rounded">
             <div class="text-center">Create</div>
         </a>
     </div>
-    <table class="table rounded-3">
+    <table class="table rounded-3 table table-success table-striped">
         <thead>
             <tr>
-                <th scope="col">Product Name</th>
+                <th scope="col">Name</th>
                 <th scope="col">Price</th>
                 <th scope="col">Description</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Updated At</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
-            @if(Model != null)
+            @if (Model != null)
             {
                 @foreach (var product in Model)
                 {
-                        <tr>
-                            <th>@Html.DisplayFor(model => product.Name)</th>
-                                <th>@Html.DisplayFor(model => product.Price)</th>
-                            <th class="w-50">@Html.DisplayFor(model => product.Description)</th>
-                            <th>
-                                <a asp-controller="Product" asp-action="View" asp-route-productId="@product.Id" class="btn btn-primary">View</a>
-                                <a asp-controller="Product" asp-action="Edit" asp-route-productId="@product.Id" class="btn btn-primary">Edit</a>
-                                <a asp-controller="Product" asp-action="Delete" asp-route-productId="@product.Id" class="btn btn-danger">Delete</a>
-                            </th>
-                        </tr>
+                    <tr>
+                        <th>@Html.DisplayFor(model => product.Name)</th>
+                        <th>@Html.DisplayFor(model => product.Price)</th>
+                        <th>@Html.DisplayFor(model => product.Description)</th>
+                        <th>@Html.DisplayFor(model => product.CreatedAt)</th>
+                        <th>@Html.DisplayFor(model => product.UpdatedAt)</th>
+                        <th>
+                            <a asp-controller="Product" asp-action="View" asp-route-productId="@product.Id"
+                                class="btn btn-primary">View</a>
+                            <a asp-controller="Product" asp-action="Edit" asp-route-productId="@product.Id"
+                                class="btn btn-primary">Edit</a>
+                            <a asp-controller="Product" asp-action="Delete" asp-route-productId="@product.Id"
+                                class="btn btn-danger">Delete</a>
+                        </th>
+                    </tr>
                 }
             }
         </tbody>
     </table>
+</section>

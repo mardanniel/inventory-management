@@ -1,5 +1,9 @@
 @model Product
 
+@{
+    ViewData["Title"] = $"Delete {Model.Name}";
+}
+
 <section>
     <form method="GET" asp-controller="Product" asp-action="DeleteConfirmed" class="alert alert-danger">
         <h4>Are you sure you want to delete this product?</h4>
@@ -7,9 +11,16 @@
         <input type="submit" value="Delete" class="btn btn-danger" />
         <a asp-action="Index" class="btn btn-primary">Back to your Products</a>
     </form>
-    <div class="my-4">
-        <h1>@Model.Name</h1>
-        <p>@Model.Price</p>
-        <p>@Model.Description</p>
-    </div>
+    <table class="table rounded-3 table-success table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.Name)</td>
+            <td>@Html.DisplayFor(model => model.Price)</td>
+            <td>@Html.DisplayFor(model => model.Description)</td>
+        </tr>
+    </table>
 </section>
