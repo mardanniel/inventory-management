@@ -32,6 +32,7 @@ namespace InventorySystem.API.Data
                     LastName = "Acosta",
                     DateOfBirth = DateTime.Now,
                     Gender = 'M',
+                    Status = true,
                     UserName = "admindavidacosta@email.com",
                     Email = "admindavidacosta@email.com",
                     NormalizedUserName = "admindavidacosta@email.com".ToUpper(),

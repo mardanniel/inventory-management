@@ -2,12 +2,14 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using InventorySystem.API.DTOs;
 using InventorySystem.API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
 namespace InventorySystem.API.Controllers
 {
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
@@ -15,6 +17,15 @@ namespace InventorySystem.API.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IConfiguration _appConfig;
+
+        public AccountController(UserManager<ApplicationUser> userManager, 
+                                    SignInManager<ApplicationUser> signInManager,
+                                    IConfiguration appConfig)
+        {
+            this._userManager = userManager;
+            this._signInManager = signInManager;
+            this._appConfig = appConfig;
+        }
 
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] LoginUserDTO loginDTO)
@@ -58,20 +69,15 @@ namespace InventorySystem.API.Controllers
                 FirstName = registerDTO.FirstName,
                 LastName = registerDTO.LastName,
                 Email = registerDTO.Email,
-                Gender = registerDTO.Gender
+                Gender = registerDTO.Gender,
+                Status = true
             };
 
-            // var newUser = await this._userManager.CreateAsync(user, userDTO.Password);
-            // if (newUser.Succeeded)
-            //     return user;
+            var registerResult = await this._userManager.CreateAsync(user, registerDTO.Password);
 
-            return Ok();
-        }
-
-        [HttpGet("Logout")]
-        public async Task<IActionResult> Logout()
-        {
-            return Ok();
+            return registerResult.Succeeded 
+                ? Ok("User successfully registered") 
+                : BadRequest("Registration failed. Please try again.");
         }
     }
 }

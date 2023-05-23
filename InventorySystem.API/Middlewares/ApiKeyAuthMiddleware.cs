@@ -7,7 +7,7 @@ namespace InventorySystem.API.Middlewares
 
         public ApiKeyAuthMiddleware(RequestDelegate next)
         {
-            _next = next;
+            this._next = next;
         }
 
         public async Task Invoke(HttpContext context)
@@ -30,7 +30,7 @@ namespace InventorySystem.API.Middlewares
                 return;
             }
 
-            await _next(context);
+            await this._next(context);
         }
     }
 }
